@@ -14,7 +14,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: '123',
       database: 'boardclub',
       autoLoadEntities: true,
-      synchronize: true, // ⚠️ só em desenvolvimento
+      synchronize: false, // ⚠️ só em desenvolvimento
     }),
     UsersModule,
     TypeOrmModule.forFeature([User]),
