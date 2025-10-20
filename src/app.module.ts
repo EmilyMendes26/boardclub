@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProductsModule } from './products/products.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -14,10 +15,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: '123',
       database: 'boardclub',
       autoLoadEntities: true,
-      synchronize: false, // ⚠️ só em desenvolvimento
+      synchronize: true, // ⚠️ só em desenvolvimento (Responsável por criar as tabelas)
     }),
     UsersModule,
     TypeOrmModule.forFeature([User]),
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
