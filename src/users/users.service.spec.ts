@@ -1,18 +1,28 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UsersService } from './users.service';
+import { UserService } from '../user.service';
+import { UserRepositories } from '../UserRepositories';
+import { Database } from '../DatabaseRepositories';
+import { DatabaseRepositories } from './repositories/DatabaseRepositories';
 
-describe('UsersService', () => {
-  let service: UsersService;
+describe('UserService', () => {
+  let service: UserService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [UsersService],
+      providers: [
+        UserService,
+        {
+          provide: UserRepositories,
+          useClass: DatabaseRepositories,
+        },
+      ],
     }).compile();
 
-    service = module.get<UsersService>(UsersService);
+    service = module.get<UserService>(UserService);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  it('should create a user', async () => {
+    await service.createUser({ name: 'Teste' });
+    // assertivas aqui...
   });
 });
