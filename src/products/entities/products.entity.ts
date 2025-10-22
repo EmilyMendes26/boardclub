@@ -19,4 +19,7 @@ export class Products {
 
     @Column()
     desc: string
+
+    @Column()
+    imageURL: string
 }
