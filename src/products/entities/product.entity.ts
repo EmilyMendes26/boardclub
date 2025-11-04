@@ -9,14 +9,11 @@ export class Product {
   nome: string;
 
   @Column()
-  descricao: string;
-
-  @Column('decimal')
-  preco: number;
+  email: string;
 
   @Column()
-  imageURL: string;
+  password: string;
 
   @Column()
-  status: string;
+  cnpj: number;
 }

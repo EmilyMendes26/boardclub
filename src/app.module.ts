@@ -6,6 +6,7 @@ import { User } from './users/entities/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
 import { ReservaModule } from './reserva/reserva.module';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -22,6 +23,8 @@ import { ReservaModule } from './reserva/reserva.module';
     TypeOrmModule.forFeature([User]),
     ProductsModule,
     ReservaModule,
+    AuthModule,
+
   ],
   controllers: [AppController],
   providers: [AppService],
