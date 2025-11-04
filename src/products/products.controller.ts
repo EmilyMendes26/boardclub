@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -7,11 +8,26 @@ import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { unlink } from 'fs/promises';
 import { join } from 'path';
+=======
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { ProductsService } from './products.service';
+import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
+>>>>>>> master
 
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
+<<<<<<< HEAD
 @Post()
 @UseInterceptors(
   FileInterceptor('imageURL', {
@@ -36,6 +52,12 @@ async create(
   }
   return this.productsService.create(createProductDto);
 }
+=======
+  @Post()
+  create(@Body() createProductDto: CreateProductDto) {
+    return this.productsService.create(createProductDto);
+  }
+>>>>>>> master
 
   @Get()
   findAll() {
@@ -52,6 +74,7 @@ async create(
     return this.productsService.update(+id, updateProductDto);
   }
 
+<<<<<<< HEAD
 @Delete(':id')
 async remove(@Param('id') id: string) {
   const product = await this.productsService.findOne(+id);
@@ -68,4 +91,10 @@ async remove(@Param('id') id: string) {
 
   return this.productsService.remove(+id);
 }
+=======
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.productsService.remove(+id);
+  }
+>>>>>>> master
 }
