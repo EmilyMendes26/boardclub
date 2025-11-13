@@ -31,7 +31,7 @@ export class CreateUserDto {
   )
   password: string;
 
-  @IsPhoneNumber(undefined, { message: 'O numero deve conter DD do pais' })
+  //@IsPhoneNumber(undefined, { message: 'O numero deve conter DD do pais' })
   @IsString()
   telefone: string;
 }
